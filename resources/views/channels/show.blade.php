@@ -10,8 +10,8 @@
         這裡是頻道 <?php echo $channel_id ?? ''?>的資料<br/>
         團隊名稱:{{$c_name}}<br/>
         團隊類別:{{$category}}<br/>
-        訂閱人數:{{$fans}}<br/>
-        觀看人數:{{$views}}<br/>
+        粉絲數(萬):{{$fans}}<br/>
+        平均觀看量(萬):{{$views}}<br/>
 
     </body>
 </html>

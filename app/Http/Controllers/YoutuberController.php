@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\youtuber;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class YoutuberController extends Controller
@@ -14,30 +16,28 @@ class YoutuberController extends Controller
     }
     function creat()
     {
-        return view('youtuber.creat');
+        $get=youtuber::create(['yt_name' => '阿鋪',
+            'c_id'=>10,
+            'year'=>20,
+            'education'=>'龍華',
+            'country'=>'台灣',
+            'created_at'=>Carbon::now(),
+            'update_at'=>Carbon::now()]);
+        return view('youtuber.creat',$get->toArray());
     }
     function edit($id)
     {
+        $get=youtuber::findorofail($id);
+        $g_youtuber = $get->toArray();
         $youtuber_id=$id;
-        if ($id<10)
-        {
-            $y_name="jason";   // $channel_name = "wacky";
-            $y_years=20;   // $channel_guys = 5;
-            $y_country="Taiwan"; // $channel_views = 100;
-        } else {
-            $y_name = "Null";   // $channel_name = "wacky";
-            $y_years = "Null";   // $channel_guys = 5;
-            $y_country = "Null";
-        }
-        $data=compact('youtuber_id','y_name','y_years','y_country');
-        return view('youtuber.edit',$data);
+
+        return view('youtuber.edit',$g_youtuber)->with(["youtuber_id"=>$id]);
     }
     function show($id)
     {
         //$channel_name="";$chanel_guys="";$channel_views="";
-        $get=youtuber::find($id);
-        if ($get == null)
-            return "NULL";
+        $get=youtuber::findorfail($id);
+
         $g_youtuber = $get->toArray();
        /* if ($id<10)
         {

@@ -28,24 +28,17 @@ class ChannelsCtroller extends Controller
 
     function edit($id)
     {
-        $get=channel::find($id);
-        $data['channel_id']=$id;
+        $get=channel::findorfail($id);
+        if ($get == null)
+            return "NULL";
+        $g_channel = $get->toArray();
+        $channel_id=$id;
 
-        if ($id<10)
-        {
-            $data['c_name']="wacky";   // $channel_name = "wacky";
-            $data['c_guys']=5;   // $channel_guys = 5;
-            $data['c_views']=100; // $channel_views = 100;
-        } else {
-            $data['c_name'] = "Null";   // $channel_name = "wacky";
-            $data['c_guys'] = "Null";   // $channel_guys = 5;
-            $data['c_views'] = "Null";
-        }
-        return view('channels.edit',$data);
+        return view('channels.edit',$g_channel)->with(["channel_id"=>$id]);
     }
     function show($id)
     {
-        $get=channel::find($id);
+        $get=channel::findorfail($id);
         if ($get == null)
             return "NULL";
         $g_channel = $get->toArray();

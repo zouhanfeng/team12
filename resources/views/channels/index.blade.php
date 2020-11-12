@@ -11,8 +11,8 @@
          <tr>
              <th>頻道名稱</th>
              <th>頻道類別</th>
-             <th>訂閱人數</th>
-             <th>觀看人數</th>
+             <th>粉絲數(萬)</th>
+             <th>平均觀看人數(萬)</th>
            </tr>
 
          @foreach( $channel  as $get)

@@ -46,7 +46,7 @@ Route::get('/', function () {
 Route::get('/channels',[ChannelsCtroller::class,'index'])->name('channels');//function () {return view('channels.index');}    '\App\Http\Controllers\ChannelsCtroller@index')
 
 //----------------------------'/channels/creat'------------------------------------------------
-Route::get('/channels/creat',[ChannelsCtroller::class,'creat'] )->name('c_creat');
+Route::get('/channels/create',[ChannelsCtroller::class,'creat'] )->name('c_creat');
 
 //----------------------------'/channels/edit'------------------------------------------------
 Route::get('/channels/{id}/edit',[ChannelsCtroller::class,'edit'])->name('c_edit')->where(['id'=>'[0-9]+']);
@@ -62,13 +62,13 @@ Route::get('/channels/{id}',[ChannelsCtroller::class,'show'])->name('c_show')->w
 //---------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------
 //----------------------------'/youtuber/index'------------------------------------------------
-Route::get('/youtuber',[YoutuberController::class,'index'])->name('youtuber');
+Route::get('/youtubers',[YoutuberController::class,'index'])->name('youtuber');
 
 //-------------------------------'/youtuber/creat'---------------------------------------------
-Route::get('/youtuber/creat', [YoutuberController::class,'creat'])->name('y_creat');
+Route::get('/youtubers/create', [YoutuberController::class,'creat'])->name('y_creat');
 
 //----------------------------'/youtuber/edit'------------------------------------------------
-Route::get('/youtuber/{id}/edit',[YoutuberController::class,'edit'])->name('y_edit')->where(['id'=>'[0-9]+']);
+Route::get('/youtubers/{id}/edit',[YoutuberController::class,'edit'])->name('y_edit')->where(['id'=>'[0-9]+']);
 
 //----------------------------'/youtuber/show'------------------------------------------------
-Route::get('/youtuber/{id}',[YoutuberController::class ,'show'])->name('y_show')->where(['id'=>'[0-9]+']);
+Route::get('/youtubers/{id}',[YoutuberController::class ,'show'])->name('y_show')->where(['id'=>'[0-9]+']);
