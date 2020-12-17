@@ -1,16 +1,40 @@
-<html>
-    <head>
-        <title>
-            hello!!!
-        </title>
-    </head>
-    <body>
-        <h1>預備創建的網頁(youtuber)</h1>
-        <a href="<?php echo route('youtuber');?> ">youtuber的主畫面</a><br/>
-        團員姓名:{{$yt_name}}<br/>
-        頻道編號:{{$c_id}}<br/>
-        團員年齡:{{$year }}<br/>
-        團員學歷:{{$education}}<br/>
-        團員國籍:{{$country}}<br/>
-    </body>
-</html>
+@extends('app')
+
+@section('title', '建立團員表單')
+
+@section('theme', '建立團員的表單')
+
+@section('contents')
+    {!! Form::open() !!}
+
+    <div class="form-group">
+        {!! Form::label('yt_name','團員姓名') !!}
+        {!! Form::text('$yt_name',null,['class'=>'form-control']) !!}
+        {!! Form::open() !!}
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('c_id','頻道編號') !!}
+        {!! Form::text('c_id',null,['class'=>'form-control']) !!}
+        {!! Form::open() !!}
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('year','團員年齡') !!}
+        {!! Form::text('year',null,['class'=>'form-control']) !!}
+        {!! Form::open() !!}
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('education','團員學歷') !!}
+        {!! Form::text('education',null,['class'=>'form-control']) !!}
+        {!! Form::open() !!}
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('country','團員國籍') !!}
+        {!! Form::text('country',null,['class'=>'form-control']) !!}
+        {!! Form::open() !!}
+    </div>
+    {!! Form::close() !!}
+@endsection

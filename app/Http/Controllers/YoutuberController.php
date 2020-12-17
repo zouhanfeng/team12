@@ -25,13 +25,15 @@ class YoutuberController extends Controller
             'update_at'=>Carbon::now()]);
         return view('youtuber.creat',$get->toArray());
     }
+
     function edit($id)
     {
-        $get=youtuber::findorofail($id);
-        $g_youtuber = $get->toArray();
-        $youtuber_id=$id;
+        $get=youtuber::findorfail($id);
+        $youtuber = $get->toArray();
+        //$channel_id=$id;
 
-        return view('youtuber.edit',$g_youtuber)->with(["youtuber_id"=>$id]);
+
+        return view('youtuber.edit',$youtuber);
     }
     function show($id)
     {

@@ -29,12 +29,10 @@ class ChannelsCtroller extends Controller
     function edit($id)
     {
         $get=channel::findorfail($id);
-        if ($get == null)
-            return "NULL";
         $g_channel = $get->toArray();
-        $channel_id=$id;
+        //$channel_id=$id;
 
-        return view('channels.edit',$g_channel)->with(["channel_id"=>$id]);
+        return view('channels.edit',$g_channel);
     }
     function show($id)
     {

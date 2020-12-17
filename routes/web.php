@@ -46,7 +46,7 @@ Route::get('/', function () {
 Route::get('/channels',[ChannelsCtroller::class,'index'])->name('channels');//function () {return view('channels.index');}    '\App\Http\Controllers\ChannelsCtroller@index')
 
 //----------------------------'/channels/creat'------------------------------------------------
-Route::get('/channels/create',[ChannelsCtroller::class,'creat'] )->name('c_creat');
+Route::get('/channels/create',[ChannelsCtroller::class,'creat'] )->name('c_create');
 
 //----------------------------'/channels/edit'------------------------------------------------
 Route::get('/channels/{id}/edit',[ChannelsCtroller::class,'edit'])->name('c_edit')->where(['id'=>'[0-9]+']);
@@ -65,7 +65,7 @@ Route::get('/channels/{id}',[ChannelsCtroller::class,'show'])->name('c_show')->w
 Route::get('/youtubers',[YoutuberController::class,'index'])->name('youtuber');
 
 //-------------------------------'/youtuber/creat'---------------------------------------------
-Route::get('/youtubers/create', [YoutuberController::class,'creat'])->name('y_creat');
+Route::get('/youtubers/create', [YoutuberController::class,'creat'])->name('y_create');
 
 //----------------------------'/youtuber/edit'------------------------------------------------
 Route::get('/youtubers/{id}/edit',[YoutuberController::class,'edit'])->name('y_edit')->where(['id'=>'[0-9]+']);

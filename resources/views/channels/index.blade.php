@@ -1,29 +1,35 @@
-<html>
-    <head>
-        <title>
-            hello!!!
-        </title>
-    </head>
-    <body>
-        <h1>預備查巡的網頁</h1>
-        <a href="<?php echo route('youtuber');?> ">youtuber的主畫面</a></br><br/><br/><br/>
-        <table border="5" width="500" height="200" bgcolor="#ff4500">
-         <tr>
-             <th>頻道名稱</th>
-             <th>頻道類別</th>
-             <th>粉絲數(萬)</th>
-             <th>平均觀看人數(萬)</th>
-           </tr>
+@extends('app')
 
-         @foreach( $channel  as $get)
-                <tr>
-                    <td> {{$get->c_name}}  </td>
-                    <td> {{$get->category}}  </td>
-                    <td> {{$get->fans}}  </td>
-                   <td> {{$get->views}}  </td>
-                </tr>
-          @endforeach
-        </table>
-    </body>
-</html>
+@section('title', '所有頻道')
+
+@section('theme', '所有頻道')
+
+@section('contents')
+
+    <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
+        <a href="{{ route('c_create') }} ">新增頻道</a>
+    </div>
+    <table>
+        <tr>
+            <th>頻道名稱</th>
+            <th>頻道類別</th>
+            <th>粉絲數(萬)</th>
+            <th>平均觀看人數(萬)</th>
+            <th>操作1</th>
+            <th>操作2</th>
+        </tr>
+        @foreach( $channel  as $get)
+            <tr>
+                <td> {{$get->c_name}}  </td>
+                <td> {{$get->category}}  </td>
+                <td> {{$get->fans}}  </td>
+                <td> {{$get->views}}  </td>
+                <td><a href="{{ route('c_show', ['id'=>$get->id]) }}">顯示</a></td>
+                <td><a href="{{ route('c_edit', ['id'=>$get->id]) }}">修改</a></td>
+            </tr>
+        @endforeach
+    </table>
+
+@endsection
+
 

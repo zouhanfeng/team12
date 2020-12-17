@@ -1,16 +1,42 @@
-<html>
-    <head>
-        <title>
-            hello!!!
-        </title>
-    </head>
-    <body>
-        <h1>預備創建的網頁</h1>
-        <a href="<?php echo route('channels');?> ">channels的主畫面</a><br/>
-        頻道名稱:{{$c_name}}<br/>
-        類別    :{{$category}}<br/>
-        粉絲數(萬):{{$fans}}<br/>
-        平均觀看量(萬):{{$views}}<br/>
-    </body>
-</html>
+
+@extends('app')
+
+@section('title', '建立頻道表單')
+
+@section('theme', '建立頻道的表單')
+
+@section('contents')
+    {!! Form::open() !!}
+
+    <div class="form-group">
+        {!! Form::label('c_name','頻道名稱') !!}
+        {!! Form::text('$c_name',null,['class'=>'form-control']) !!}
+        {!! Form::open() !!}
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('category','團隊類別') !!}
+        {!! Form::text('category',null,['class'=>'form-control']) !!}
+        {!! Form::open() !!}
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('fans','粉絲數(萬)') !!}
+        {!! Form::text('fans',null,['class'=>'form-control']) !!}
+        {!! Form::open() !!}
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('views','平均觀看(萬)') !!}
+        {!! Form::text('views',null,['class'=>'form-control']) !!}
+        {!! Form::open() !!}
+    </div>
+    {!! Form::close() !!}
+
+@endsection
+
+
+
+
+
 
