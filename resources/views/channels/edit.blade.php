@@ -5,10 +5,9 @@
 @section('theme', '編輯中的頻道')
 
 @section('contents')
-    頻道名稱:{{$c_name}}<br/>
-    團隊類別:{{$category}}<br/>
-    粉絲數(萬):{{$fans}}<br/>
-    平均觀看(萬):{{$views}}<br/>
-
+    @include('message.list')
+    {!! Form::model($channel, ['method'=>'PATCH', 'action'=>['\App\Http\Controllers\ChannelsController@update', $channel->id]]) !!}
+    @include('channels.form', ['submitButtonText'=>'更新頻道資料'])
+    {!! Form::close() !!}
 @endsection
 

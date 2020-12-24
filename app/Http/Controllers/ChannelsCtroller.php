@@ -17,13 +17,8 @@ class ChannelsCtroller extends Controller
     }
     function creat()
     {
-        $get=channel::create(['c_name' => '831',
-                        'category'=>'娛樂類',
-                        'fans'=>987,
-                        'views'=>500,
-                        'created_at'=>Carbon::now(),
-                        'update_at'=>Carbon::now()]);
-        return view('channels.creat',$get->toArray());
+
+        return view('channels.creat');
     }
 
     function edit($id)
@@ -56,5 +51,11 @@ class ChannelsCtroller extends Controller
                                                          "c_views"=>$channel_views,
                                                             "channel_id"=>$id]);//->with("channel_id",$id)*/
         return view('channels.show',$g_channel);
+    }
+    public function destroy($id)
+    {
+        $player = channel::findOrFail($id);
+        $player->delete();
+        return redirect('channels');
     }
 }

@@ -26,6 +26,13 @@
                 <td> {{$get->views}}  </td>
                 <td><a href="{{ route('c_show', ['id'=>$get->id]) }}">顯示</a></td>
                 <td><a href="{{ route('c_edit', ['id'=>$get->id]) }}">修改</a></td>
+                <td>
+                    <form action="{{ url('/channel/delete', ['id' => $get->id]) }}" method="post">
+                        <input class="btn btn-default" type="submit" value="刪除" />
+                        @method('delete')
+                        @csrf
+                    </form>
+                </td>
             </tr>
         @endforeach
     </table>

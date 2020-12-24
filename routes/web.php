@@ -53,7 +53,8 @@ Route::get('/channels/{id}/edit',[ChannelsCtroller::class,'edit'])->name('c_edit
 
 //----------------------------'/channels/show'------------------------------------------------
 Route::get('/channels/{id}',[ChannelsCtroller::class,'show'])->name('c_show')->where(['id'=>'[0-9]+']);
-
+//----------------------------'/channels/destory'------------------------------------------------
+Route::delete('channels/delete/{id}', [ChannelsCtroller::class, 'destroy'])->where('id', '[0-9]+')->name('youyuber.destroy');
 
 
 
@@ -62,7 +63,7 @@ Route::get('/channels/{id}',[ChannelsCtroller::class,'show'])->name('c_show')->w
 //---------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------
 //----------------------------'/youtuber/index'------------------------------------------------
-Route::get('/youtubers',[YoutuberController::class,'index'])->name('youtuber');
+Route::get('/youtubers',[YoutuberController::class,'index'])->name('youtubers');
 
 //-------------------------------'/youtuber/creat'---------------------------------------------
 Route::get('/youtubers/create', [YoutuberController::class,'creat'])->name('y_create');
@@ -72,3 +73,6 @@ Route::get('/youtubers/{id}/edit',[YoutuberController::class,'edit'])->name('y_e
 
 //----------------------------'/youtuber/show'------------------------------------------------
 Route::get('/youtubers/{id}',[YoutuberController::class ,'show'])->name('y_show')->where(['id'=>'[0-9]+']);
+
+//----------------------------'/youtuber/destory'------------------------------------------------
+Route::delete('youtubers/delete/{id}', [YoutuberController::class, 'destroy'])->where('id', '[0-9]+')->name('youyuber.destroy');
