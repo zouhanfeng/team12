@@ -9,7 +9,7 @@
 
     <body>
           <a href="<?php echo route('channels');?> ">channel</a>
-          <a href="<?php echo route('youtuber');?> ">youtuber</a>
+          <a href="<?php echo route('youtubers');?> ">youtuber</a>
     </body>
 
 

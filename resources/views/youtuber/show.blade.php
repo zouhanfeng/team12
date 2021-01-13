@@ -1,15 +1,16 @@
 
+
 @extends('app')
 
-@section('title', '顯示特定頻道')
+@section('title', '顯示特定Youtuber')
 
-@section('theme', '您所選取的頻道資料')
+@section('theme', '您所選取的Youtuber資料')
 
 @section('contents')
-    團員姓名:{{$youtuber->yt_name}}<br/>
-    頻道編號:{{$youtuber->c_id}}<br/>
-    團員年齡:{{$youtuber->year }}<br/>
-    出道日：{{ $youtuber->onboarddate }}<br/>
-    團員學歷:{{$youtuber->education}}<br/>
-    團員國籍:{{$youtuber->country}}<br/>
+    Youtuber姓名:{{$youtuber->yt_name}}<br/>
+    頻道編號:{{$youtuber->channel->c_name}}<br/>
+    年齡:{{$youtuber->year }}<br/>
+    年資：{{ $youtuber->onboarddate }}<br/>
+    學歷:{{$youtuber->education}}<br/>
+    國籍:{{$youtuber->country}}<br/>
 @endsection

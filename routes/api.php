@@ -2,7 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ChannelsCtroller;
+use App\Http\Controllers\YoutuberController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,7 +15,22 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::post('register', [AuthController::class, 'register']);
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('login',  [AuthController::class, 'login']);
+
+
+Route::group(['middleware' => 'auth:sanctum'], function () {
+    // 查詢所有
+    Route::get('channels', [ChannelsCtroller::class, 'api_teams']);
+    // 修改指定
+    Route::patch('channels', [ChannelsCtroller::class, 'api_update']);
+    // 刪除指定
+    Route::delete('channels', [ChannelsCtroller::class, 'api_delete']);
+    // 查詢所有
+    Route::get('youtubers', [YoutuberController::class, 'api_players']);
+    // 修改指定
+    Route::patch('youtubers', [YoutuberController::class, 'api_update']);
+    // 刪除指定
+    Route::delete('youtubers', [YoutuberController::class, 'api_delete']);
 });

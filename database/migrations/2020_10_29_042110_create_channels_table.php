@@ -19,6 +19,7 @@ class CreateChannelsTable extends Migration
             $table->string('category')->comment('類別');
             $table->string('fans' )->comment('粉絲數(萬)');
             $table->string('views')->comment('平均觀看量(萬)');
+            $table->string('state')->comment('地區');
             /* $table->foreign('tid')
                  ->references('id')
                  ->on('teams')

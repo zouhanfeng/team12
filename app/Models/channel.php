@@ -12,6 +12,22 @@ class channel extends Model
             'c_name',
             'category',
             'fans',
-            'views'
+            'views',
+            'state'
         ];
+    public function scopeState($query, $state)
+    {
+        $query->where('state', '=', $state);
+    }
+
+    public function youtubers()
+    {
+        return $this->hasMany('App\Models\youtuber', 'c_id');
+    }
+
+    public function delete()
+    {
+        $this->youtubers()->delete();
+        return parent::delete();
+    }
 }

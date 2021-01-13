@@ -6,7 +6,7 @@
     </svg>
 
     <div class="ml-4 text-lg leading-7 font-semibold">
-        <a href="{{ route('youtuber') }}" class="ml-1 underline">
+        <a href="{{ route('youtubers') }}" class="ml-1 underline">
             所有youtuber
         </a>
     </div>

@@ -33,10 +33,16 @@ class ChannelsSeeder extends Seeder
         return $name;
     }
     public function generateRandomcategory() {
-        $category = [
-            '教育類','娛樂類','生活類','色情類','魚類'
+    $category = [
+        '教育類','娛樂類','生活類','色情類','魚類'
+    ];
+    return $category[rand(0, count($category)-1)];
+    }
+    public function generateRandomState() {
+        $state = [
+            '亞洲','美洲','歐洲','非洲'
         ];
-        return $category[rand(0, count($category)-1)];
+        return $state[rand(0, count($state)-1)];
     }
     public function generateRandomfans() {
 
@@ -58,6 +64,7 @@ class ChannelsSeeder extends Seeder
             $category = $this->generateRandomcategory();
             $fans = $this->generateRandomfans(). "萬";
             $views = $this->generateRandomview(). "萬";
+            $state = $this->generateRandomState();
             $random_datetime = Carbon::now()->subMinutes(rand(1, 55));
 
             DB::table('channels')->insert([
@@ -65,6 +72,7 @@ class ChannelsSeeder extends Seeder
                 'category' => $category,
                 'fans' => $fans,
                 'views' => $views,
+                'state' => $state,
                 'created_at' => $random_datetime,
                 'updated_at' => $random_datetime
             ]);

@@ -6,7 +6,7 @@
 
 @section('contents')
     @include('message.list')
-    {!! Form::model($channel, ['method'=>'PATCH', 'action'=>['\App\Http\Controllers\ChannelsController@update', $channel->id]]) !!}
+    {!! Form::model($channel, ['method'=>'PATCH', 'action'=>['\App\Http\Controllers\ChannelsCtroller@update', $channel->id]]) !!}
     @include('channels.form', ['submitButtonText'=>'更新頻道資料'])
     {!! Form::close() !!}
 @endsection

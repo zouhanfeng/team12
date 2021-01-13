@@ -51,14 +51,26 @@ Route::get('/channels/create',[ChannelsCtroller::class,'creat'] )->name('c_creat
 //----------------------------'/channels/edit'------------------------------------------------
 Route::get('/channels/{id}/edit',[ChannelsCtroller::class,'edit'])->name('c_edit')->where(['id'=>'[0-9]+']);
 
+
+//----------------------------'/channels/update'------------------------------------------------
+
+Route::patch('channels/update/{id}', [ChannelsCtroller::class, 'update'])->where('id', '[0-9]+')->name('c_update');
+
 //----------------------------'/channels/show'------------------------------------------------
 Route::get('/channels/{id}',[ChannelsCtroller::class,'show'])->name('c_show')->where(['id'=>'[0-9]+']);
+
 //----------------------------'/channels/destory'------------------------------------------------
-Route::delete('channels/delete/{id}', [ChannelsCtroller::class, 'destroy'])->where('id', '[0-9]+')->name('youyuber.destroy');
+Route::delete('channels/delete/{id}', [ChannelsCtroller::class, 'destroy'])->where('id', '[0-9]+')->name('c_destroy');
+
+//----------------------------'/channels/asia'------------------------------------------------
+Route::get('/channels/asia',[ChannelsCtroller::class,'Asia'])->name('c_asia');
+
+//----------------------------'/channels/others'------------------------------------------------
+Route::get('/channels/others',[ChannelsCtroller::class,'Others'])->name('c_others');
 
 
 
-
+Route::get('/getCSRFToken', function() { return csrf_token(); }); // csrf = cross-site request forgery (跨站請求偽造)
 
 //---------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------
@@ -68,11 +80,23 @@ Route::get('/youtubers',[YoutuberController::class,'index'])->name('youtubers');
 //-------------------------------'/youtuber/creat'---------------------------------------------
 Route::get('/youtubers/create', [YoutuberController::class,'creat'])->name('y_create');
 
+//-------------------------------'/youtuber/store'---------------------------------------------
+Route::post('youtubers/store', [YoutuberController::class, 'store'])->name('y_.store');
+
 //----------------------------'/youtuber/edit'------------------------------------------------
 Route::get('/youtubers/{id}/edit',[YoutuberController::class,'edit'])->name('y_edit')->where(['id'=>'[0-9]+']);
+
+//----------------------------'/youtuber/update'------------------------------------------------
+Route::patch('youtubers/update/{id}', [YoutuberController::class, 'update'])->where('id', '[0-9]+')->name('y_update');
 
 //----------------------------'/youtuber/show'------------------------------------------------
 Route::get('/youtubers/{id}',[YoutuberController::class ,'show'])->name('y_show')->where(['id'=>'[0-9]+']);
 
 //----------------------------'/youtuber/destory'------------------------------------------------
-Route::delete('youtubers/delete/{id}', [YoutuberController::class, 'destroy'])->where('id', '[0-9]+')->name('youyuber.destroy');
+Route::delete('youtubers/delete/{id}', [YoutuberController::class, 'destroy'])->where('id', '[0-9]+')->name('y_destroy');
+
+//----------------------------'/youtuber/senior'------------------------------------------------
+Route::get('youtubers/senior', [YoutuberController::class, 'senior'])->name('y_senior');
+
+//----------------------------'/youtuber/country'------------------------------------------------
+Route::post('youtubers/country', [YoutuberController::class, 'country'])->name('country');

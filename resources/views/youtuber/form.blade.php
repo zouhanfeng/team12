@@ -3,15 +3,15 @@
     {!! Form::text('yt_name', null, ['class' => 'form-control']) !!}
 </div>
 <div class="form-group">
-    {!! Form::label('c_id', '頻道編號：') !!}
-    {!! Form::select('c_id', $teams, ['class' => 'form-control']) !!}
+    {!! Form::label('c_id', '所屬頻道：') !!}
+    {!! Form::select('c_id', $channels, ['class' => 'form-control']) !!}
 </div>
 <div class="form-group">
     {!! Form::label('year','團員年齡:') !!}
     {!! Form::date('year',null ,['class'=>'form-control']) !!}
 </div>
 <div class="form-group">
-    {!! Form::label('onboarddate','出道日:') !!}
+    {!! Form::label('onboarddate','年資:') !!}
     {!! Form::date('onboarddate',null ,['class'=>'form-control']) !!}
 </div>
 <div class="form-group">

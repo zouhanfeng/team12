@@ -7,6 +7,6 @@
 @section('contents')
     @include('message.list')
     {!! Form::open(['url' => 'youtubers/store']) !!}
-    @include('youtubers.form', ['submitButtonText'=>'新增團員資料'])
+    @include('youtuber.form', ['submitButtonText'=>'新增團員資料'])
     {!! Form::close() !!}
 @endsection

@@ -4,17 +4,20 @@
 </div>
 <div class="form-group">
     {!! Form::label('category', '團隊類別：') !!}
-    {!! Form::select('category', $teams, ['class' => 'form-control']) !!}
+    {!! Form::text('category',null, ['class' => 'form-control']) !!}
 </div>
 <div class="form-group">
     {!! Form::label('fans','粉絲數(萬):') !!}
-    {!! Form::date('fans',null ,['class'=>'form-control']) !!}
+    {!! Form::text('fans',null ,['class'=>'form-control']) !!}
 </div>
 <div class="form-group">
     {!! Form::label('views','平均觀看量(萬):') !!}
-    {!! Form::date('views',null ,['class'=>'form-control']) !!}
+    {!! Form::text('views',null ,['class'=>'form-control']) !!}
 </div>
-
+<div class="form-group">
+    {!! Form::label('state','地區:') !!}
+    {!! Form::text('state',null ,['class'=>'form-control']) !!}
+</div>
 <div class="form-group">
     {!! Form::submit($submitButtonText, ['class'=>'btn btn-primary form-control']) !!}
 </div>

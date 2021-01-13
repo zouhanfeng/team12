@@ -51,11 +51,14 @@ class YoutubersSeeder extends Seeder
             $education = $this->generateRandomeducation();
             $country = $this->generateRandomcountry();
             $random_datetime = Carbon::now()->subMinutes(rand(1, 55));
+            $year = Carbon::now()->subYears(rand(48, 60))->subMonths(rand(0, 12))->subRealDays(rand(0,31));
+            $onboarddate = Carbon::now()->subYears(rand(18, 30))->subMonths(rand(0, 12))->subRealDays(rand(0,31));
 
             DB::table('youtubers')->insert([
                 'yt_name' => $name,
                 'c_id' => rand(1,25),
-                'year' =>rand(18,40),
+                'year' =>$year,
+                'onboarddate' =>$onboarddate,
                 'education'=>$education,
                 'country' => $country,
                 'created_at' => $random_datetime,

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\channel;
 use Carbon\Carbon;
+use App\Http\Requests\CreateChannelRequest;
 use Illuminate\Http\Request;
 
 class ChannelsCtroller extends Controller
@@ -11,9 +12,9 @@ class ChannelsCtroller extends Controller
     //
     function index()
     {
-        $channel = channel::all();
+        $channels = channel::all();
 
-        return view('channels.index',['channel'=>$channel]);
+        return view('channels.index',['channel'=>$channels]);
     }
     function creat()
     {
@@ -21,41 +22,118 @@ class ChannelsCtroller extends Controller
         return view('channels.creat');
     }
 
-    function edit($id)
+    public function edit($id)
     {
-        $get=channel::findorfail($id);
-        $g_channel = $get->toArray();
-        //$channel_id=$id;
-
-        return view('channels.edit',$g_channel);
+        $channel = channel::findOrFail($id);
+        return view('channels.edit', ['channel'=>$channel]);
     }
+
     function show($id)
     {
-        $get=channel::findorfail($id);
-        if ($get == null)
-            return "NULL";
-        $g_channel = $get->toArray();
-        //$channel_name="";$chanel_guys="";$channel_views="";
-        /*if ($id<10)
-        {
-            $channel_name = "wacky";
-            $channel_guys = 5;
-            $channel_views = 100;
-        } else{
-            $channel_name = "Null";
-            $channel_guys = "Null";
-            $channel_views = "Null";
-        }
-        return view('channels.show')->with(["c_name"=>$channel_name,
-                                                      "c_guys"=>$channel_guys,
-                                                         "c_views"=>$channel_views,
-                                                            "channel_id"=>$id]);//->with("channel_id",$id)*/
-        return view('channels.show',$g_channel);
+        $channel=channel::findorfail($id);
+        $youtubers = $channel->youtubers ;
+
+        return view('channels.show',['youtubers'=>$youtubers,'channel'=>$channel]);
     }
     public function destroy($id)
     {
-        $player = channel::findOrFail($id);
-        $player->delete();
+        $channel = channel::findOrFail($id);
+        $channel->delete();
         return redirect('channels');
+    }
+    public function Asia()
+    {
+        $channels = channel::where('state', '=',"亞洲")->get();
+
+        return view('channels.index', ['channel'=>$channels]);
+    }
+
+    public function Others()
+    {
+        $channels = channel::where('state', '!=',"亞洲")->get();
+
+        return view('channels.index', ['channel'=>$channels]);
+    }
+    public function store(CreateChannelRequest $request)
+    {
+        $c_name = $request->input('c_name');
+        $category = $request->input('category');
+        $state = $request->input('state');
+        $views = $request->input('views');
+        $fans = $request->input('fans');
+
+        channel::create([
+            'c_name' => $c_name,
+            'category' => $category,
+            'state' => $state,
+            'views' =>$views,
+            'fans' => $fans,
+            'created' => Carbon::now()
+        ]);
+
+        return redirect('channels');
+    }
+    public function update($id, CreateChannelRequest $request)
+    {
+        $channel = channel::findOrFail($id);
+
+        $channel->c_name = $request->input('c_name');
+        $channel->category = $request->input('category');
+        $channel->fans = $request->input('fans');
+        $channel->views = $request->input('views');
+        $channel->state = $request->input('state');
+        $channel->save();
+
+        return redirect('channels');
+    }
+    public function api_delete(Request $request)
+    {
+        $channel = channel::find($request->input('id'));
+
+        if ($channel == null)
+        {
+            return response()->json([
+                'status' => 0,
+            ]);
+        }
+
+        if ($channel->delete())
+        {
+            return response()->json([
+                'status' => 1,
+            ]);
+        }
+
+    }
+    public function api_teams()
+    {
+        return channel ::all();
+    }
+
+    public function api_update(Request $request)
+    {
+        $channel = channel::find($request->input('id'));
+        if ($channel == null)
+        {
+            return response()->json([
+                'status' => 0,
+            ]);
+        }
+
+        $channel->c_name = $request->input('c_name');
+        $channel->category = $request->input('category');
+        $channel->fans = $request->input('fans');
+        $channel->views = $request->input('views');
+        $channel->state = $request->input('state');
+        if ($channel->save())
+        {
+            return response()->json([
+                'status' => 1,
+            ]);
+        } else {
+            return response()->json([
+                'status' => 0,
+            ]);
+        }
     }
 }
