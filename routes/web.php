@@ -68,6 +68,8 @@ Route::get('/channels/asia',[ChannelsCtroller::class,'Asia'])->name('c_asia');
 //----------------------------'/channels/others'------------------------------------------------
 Route::get('/channels/others',[ChannelsCtroller::class,'Others'])->name('c_others');
 
+//----------------------------'/channels/store'------------------------------------------------
+Route::post('/channels/store',[ChannelsCtroller::class,'store'])->name('c_store');
 
 
 Route::get('/getCSRFToken', function() { return csrf_token(); }); // csrf = cross-site request forgery (跨站請求偽造)

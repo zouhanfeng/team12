@@ -21,9 +21,9 @@
     </div>
     <table>
         <tr>
-            <th>Youtuber編號</th>
-            <th>姓名</th>
-            <th>所屬頻道</th>
+            <th>Youtuber</th>
+            <th>頻道名稱</th>
+            <th>頻道編號</th>
             <th>年齡</th>
             <th>年資</th>
             <th>學歷</th>
