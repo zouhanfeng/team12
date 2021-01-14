@@ -59,6 +59,9 @@ Route::patch('channels/update/{id}', [ChannelsCtroller::class, 'update'])->where
 //----------------------------'/channels/show'------------------------------------------------
 Route::get('/channels/{id}',[ChannelsCtroller::class,'show'])->name('c_show')->where(['id'=>'[0-9]+']);
 
+//-------------------------------'/channels/store'---------------------------------------------
+Route::post('channels/store', [ChannelsCtroller::class, 'store'])->name('c_.store');
+
 //----------------------------'/channels/destory'------------------------------------------------
 Route::delete('channels/delete/{id}', [ChannelsCtroller::class, 'destroy'])->where('id', '[0-9]+')->name('c_destroy');
 
@@ -68,6 +71,8 @@ Route::get('/channels/asia',[ChannelsCtroller::class,'Asia'])->name('c_asia');
 //----------------------------'/channels/others'------------------------------------------------
 Route::get('/channels/others',[ChannelsCtroller::class,'Others'])->name('c_others');
 
+//----------------------------'/channels/destory'------------------------------------------------
+Route::delete('channels/delete/{id}', [ChannelsCtroller::class, 'destroy'])->where('id', '[0-9]+')->name('c_destroy');
 
 
 Route::get('/getCSRFToken', function() { return csrf_token(); }); // csrf = cross-site request forgery (跨站請求偽造)
